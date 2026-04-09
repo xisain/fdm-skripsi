@@ -10,16 +10,24 @@
                 <h1 class="hero-title">Kebun Raya Bundayati</h1>
                 <p class="hero-subtitle"></p>
                 <div class="hero-actions">
-                    <button class="button--primary">Explore</button>
+                    @guest
+                        <button class="button--primary">Explore</button>
+                    @endguest
+                    @auth
+                        <a href="{{ route('admin.dashboard') }}" class="button--primary" style="text-decoration: none; display: inline-block;">
+                            Go to Dashboard
+                        </a>
+                    @endauth
                 </div>
             </div>
             <img class="" src="{{ asset('storage/images/header.png') }}" alt=""/>
-
         </div>
     </div>
 </section>
 <section class="bg-white py-1">
-    
+    <div class="mx-auto px-4 py-10 lg:py-16 max-w-screen-xl">
+        
+    </div>
 </section>
 @endsection
 

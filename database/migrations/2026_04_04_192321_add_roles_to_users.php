@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->string('phone_number', 25)->nullable();
+            $table->enum('status', ['disable', 'enable'])->default('disable');
+            $table->foreignId('roles_id')->constrained('roles')->cascadeOnDelete();
+
         });
     }
 

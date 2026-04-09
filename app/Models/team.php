@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable('name', 'description')]
-
-class role extends Model
+#[Fillable('team_name', 'description', 'explore_location')]
+class team extends Model
 {
-    public function users(): HasMany
+    public function team_member()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(team_member::class, 'team_id');
     }
 }

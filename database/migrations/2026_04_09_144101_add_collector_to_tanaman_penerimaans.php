@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->timestamps();
+        Schema::table('tanaman_penerimaans', function (Blueprint $table) {
+            $table->foreignId('collector_id')->references('id')->on('collectors');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::table('tanaman_penerimaans', function (Blueprint $table) {
+            //
+        });
     }
 };

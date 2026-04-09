@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('collectors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('full_name');
+            $table->string('initial_collector_name', 3)->unique();
+            $table->boolean('is_manual');
+            $table->unsignedBigInteger('last_sequence')->default(0);
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('collectors');
     }
 };
